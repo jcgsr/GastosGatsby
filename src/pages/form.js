@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link, navigate } from "gatsby";
+import { navigate } from "gatsby";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 
 import { toast, Toaster } from "react-hot-toast";
+
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 import { RiDeleteBin6Fill } from "react-icons/ri";
 
@@ -35,6 +37,7 @@ const Form = () => {
 
   // Gastos mostrar
   const [gastos, setGastos] = useState([]);
+  const [loading, setLoading] = useState(true);
   const gastosColRef = collection(db, "gastos");
   const q = query(gastosColRef, orderBy("dataAtual", "desc"));
 
@@ -42,6 +45,7 @@ const Form = () => {
     const getGastos = async () => {
       const gastosData = await getDocs(q);
       setGastos(gastosData.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+      setLoading(false);
     };
     getGastos();
   }, []);
@@ -89,7 +93,13 @@ const Form = () => {
     setCarro("");
     setInss("");
   };
-
+  if (loading) {
+    return (
+      <div className="spinner">
+        <ScaleLoader color="#ccc" />
+      </div>
+    );
+  }
   return (
     <Layout>
       <Seo title="Formulário para inserir e salvar os gastos mensais" />
