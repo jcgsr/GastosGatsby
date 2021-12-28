@@ -15,10 +15,10 @@ const IndexPage = () => {
   const handleLogin = async e => {
     e.preventDefault();
     try {
-      const user = await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
       console.log("funciona");
       alert("Funciona");
-      navigate("page-2.js");
+      navigate("/form");
     } catch (error) {
       console.log(error);
     }
@@ -30,20 +30,19 @@ const IndexPage = () => {
       <h2>Login</h2>
 
       <form className="form">
-        <label htmlFor="email">e-mail</label> <br />
+        <label htmlFor="email">e-mail</label>
         <input
           type="text"
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
-        <br />
-        <label htmlFor="password">senha</label> <br />
+
+        <label htmlFor="password">senha</label>
         <input
           type="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <br />
         <button id="login" onClick={handleLogin}>
           login
         </button>
