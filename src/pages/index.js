@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, navigate } from "gatsby";
 
-// import app from "gatsby-plugin-firebase-v9.0";
+import { toast, Toaster } from "react-hot-toast";
+
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase-config";
 
@@ -16,29 +17,30 @@ const IndexPage = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      console.log("funciona");
-      alert("Funciona");
+      toast.success("Logado com sucesso!");
       navigate("/form");
     } catch (error) {
       console.log(error);
+      toast.error("Erro no login: " + error);
     }
   };
 
   return (
     <Layout>
       <Seo title="Home" />
+      <Toaster />
       <h2>Login</h2>
 
-      <form className="form">
-        <label htmlFor="email">e-mail</label>
+      <form className="form-login">
         <input
+          placeholder="e-mail"
           type="text"
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
 
-        <label htmlFor="password">senha</label>
         <input
+          placeholder="senha"
           type="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
