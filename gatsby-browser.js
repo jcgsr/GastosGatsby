@@ -1,2 +1,2 @@
-import "firebase/auth";
-import "firebase/firestore";
+// import { getAuth } from "firebase/auth";
+// import { getFirestore } from "firebase/firestore";

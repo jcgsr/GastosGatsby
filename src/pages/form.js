@@ -9,8 +9,10 @@ import { toast, Toaster } from "react-hot-toast";
 import ScaleLoader from "react-spinners/ScaleLoader";
 
 import { RiDeleteBin6Fill } from "react-icons/ri";
+import app from "gatsby-plugin-firebase-v9.0";
 
-import { signOut } from "firebase/auth";
+import { signOut, getAuth } from "firebase/auth";
+
 import {
   addDoc,
   collection,
@@ -19,8 +21,9 @@ import {
   deleteDoc,
   orderBy,
   query,
+  getFirestore,
 } from "firebase/firestore";
-import { auth, db } from "../../firebase-config";
+// import { auth, db } from "../../firebase-config";
 
 const Form = () => {
   // Gastos inserir
@@ -38,6 +41,7 @@ const Form = () => {
   // Gastos mostrar
   const [gastos, setGastos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const db = getFirestore(app);
   const gastosColRef = collection(db, "gastos");
   const q = query(gastosColRef, orderBy("dataAtual", "desc"));
 
@@ -71,6 +75,7 @@ const Form = () => {
     }
   };
   const handleLogout = async () => {
+    const auth = getAuth(app);
     await signOut(auth);
     navigate("/");
   };

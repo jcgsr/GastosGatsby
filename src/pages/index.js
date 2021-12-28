@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link, navigate } from "gatsby";
+import { navigate } from "gatsby";
 
 import { toast, Toaster } from "react-hot-toast";
-
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase-config";
+import app from "gatsby-plugin-firebase-v9.0";
+import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+// import { auth } from "../../firebase-config";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -15,10 +15,12 @@ const IndexPage = () => {
 
   const handleLogin = async e => {
     e.preventDefault();
+    const auth = getAuth(app);
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      toast.success("Logado com sucesso!");
+
       navigate("/form");
+      toast.success("Logado com sucesso!");
     } catch (error) {
       console.log(error);
       toast.error("Erro no login: " + error);
