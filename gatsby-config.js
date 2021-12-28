@@ -1,9 +1,9 @@
 // 18.12.2021 - Refazendo o site de gastos. agora em Gatsby.
 // Todos no Abais (Tãnia está aqui). Diana foi ontem com Frederico e Tânia e Susi foi hoje sozinha depois de insistir muito pra eu ir. Houve problema com a recarga da oi. Atrasou mais ainda.
 
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
+//require("dotenv").config({
+//path: `.env.${process.env.NODE_ENV}`,
+//});
 module.exports = {
   siteMetadata: {
     title: `Gastos Gatsby`,
