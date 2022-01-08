@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Jovane Rocha <cabralguerra@gmail.com>",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "firebase": "^9.6.1",
     "gatsby": "^4.4.0",
     "gatsby-plugin-env-variables": "^2.2.0",
