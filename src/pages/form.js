@@ -25,7 +25,7 @@ import {
 } from "firebase/firestore";
 // import { auth, db } from "../../firebase-config";
 
-const Form = () => {
+const Form = ({ location, ...rest }) => {
   // Gastos inserir
   const [dataAtual, setDataAtual] = useState("");
   const [casa, setCasa] = useState("");
@@ -45,6 +45,10 @@ const Form = () => {
   const gastosColRef = collection(db, "gastos");
   const q = query(gastosColRef, orderBy("dataAtual", "desc"));
 
+  // logged in
+  const auth = getAuth(app);
+  const user = auth.currentUser;
+
   useEffect(() => {
     const getGastos = async () => {
       const gastosData = await getDocs(q);
@@ -53,6 +57,10 @@ const Form = () => {
     };
     getGastos();
   }, []);
+  if (!user && location.pathname !== `/`) {
+    navigate("/");
+    return null;
+  }
   const handleInsert = async e => {
     e.preventDefault();
     try {

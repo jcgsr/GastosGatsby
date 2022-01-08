@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { navigate } from "gatsby";
+import { Router } from "@reach/router";
+
+import PrivateRoute from "./form";
 
 import { toast, Toaster } from "react-hot-toast";
 import app from "gatsby-plugin-firebase-v9.0";
@@ -30,6 +33,9 @@ const IndexPage = () => {
   return (
     <Layout>
       <Seo title="Home" />
+      <Router basepath="/">
+        <PrivateRoute path="/form" />
+      </Router>
       <Toaster />
       <h2>Login</h2>
 
