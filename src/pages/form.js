@@ -56,11 +56,12 @@ const Form = ({ location, ...rest }) => {
       setLoading(false);
     };
     getGastos();
+    if (!user && location.pathname !== `/`) {
+      navigate("/");
+      return null;
+    }
   }, []);
-  if (!user && location.pathname !== `/`) {
-    navigate("/");
-    return null;
-  }
+
   const handleInsert = async e => {
     e.preventDefault();
     try {
