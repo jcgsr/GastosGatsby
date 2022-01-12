@@ -1,9 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;700&display=swap");
+
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   font: 112.5%/1.45em georgia, serif, sans-serif;
   box-sizing: border-box;
   overflow-y: scroll;
+  font-family: "Dosis", sans-serif;
 }
 body {
   margin: 0;
