@@ -129,55 +129,55 @@ const Form = ({ location, ...rest }) => {
           />
           <input
             placeholder="casa"
-            type="text"
+            type="number"
             value={casa}
             onChange={e => setCasa(e.target.value)}
           />
           <input
             placeholder="água"
-            type="text"
+            type="number"
             value={agua}
             onChange={e => setAgua(e.target.value)}
           />
           <input
             placeholder="luz"
-            type="text"
+            type="number"
             value={luz}
             onChange={e => setLuz(e.target.value)}
           />
           <input
             placeholder="ourocard"
-            type="text"
+            type="number"
             value={ouro}
             onChange={e => setOuro(e.target.value)}
           />
           <input
             placeholder="net/tv"
-            type="text"
+            type="number"
             value={net}
             onChange={e => setNet(e.target.value)}
           />
           <input
             placeholder="saúde"
-            type="text"
+            type="number"
             value={saude}
             onChange={e => setSaude(e.target.value)}
           />
           <input
             placeholder="educação"
-            type="text"
+            type="number"
             value={edu}
             onChange={e => setEdu(e.target.value)}
           />
           <input
             placeholder="carro-528.9"
-            type="text"
+            type="number"
             value={carro}
             onChange={e => setCarro(e.target.value)}
           />
           <input
             placeholder="inss"
-            type="text"
+            type="number"
             value={inss}
             onChange={e => setInss(e.target.value)}
           />
